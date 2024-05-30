@@ -4,7 +4,7 @@
 
 ## DOWNLOAD:
 <p>
-  <a href="https://github.com/ConzZah/libaacs_installer_linux/archive/refs/heads/main.zip">
+  <a href="https://github.com/ConzZah/libaacs-installer-for-linux/archive/refs/heads/main.zip">
     <img alt="Download_Latest" src="https://img.shields.io/badge/download-latest-0688CB.svg">
   </a>
 </p>
