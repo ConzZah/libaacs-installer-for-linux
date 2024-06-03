@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
   #========================================
-  # Project: LIBAACS INSTALLER v1.2
+  # Project: LIBAACS INSTALLER v1.2.1
   # Author:  ConzZah / ©️ 2024
-  # Last Modification: 03.06.2024 / 05:27
+  # Last Modification: 03.06.2024 / 06:38
   #========================================
 clear; echo "[ ConzZah's LIBAACS INSTALLER v1.2 ]"; echo ""
 echo "THIS SCRIPT WILL DOWNLOAD & INSTALL THE FOLLOWING:"; echo ""
@@ -12,7 +12,8 @@ echo "- libbluray-bdj"
 echo "- libbluray2"
 echo "- keydb.cfg"
 echo ""; echo "[ PRESS ANY KEY TO START ]"; read -n 1 -s; echo ""
-sudo apt install vlc libaacs0 libbluray-bdj libbluray2 >/dev/null 2>&1
+echo "[ INSTALLING PACKAGES, PLEASE WAIT... ]"
+sudo apt install -y vlc libaacs0 libbluray-bdj libbluray2 >/dev/null 2>&1
 echo ""; echo "[ DONE INSTALLING LIBAACS ]"; echo ""; echo ""
 echo "[ DOWNLOADING KEYDB.CFG FROM: ]"; echo "[ https://archive.org/download/keydb_eng/keydb_eng.zip ]"; echo ""; echo "[ PLEASE WAIT ]"; mkdir -p ~/.config/aacs/; cd ~/.config/aacs/
 wget -q -O last_updated.txt https://gist.githubusercontent.com/ConzZah/5631e144da455e9c08daa1dc80a01cf2/raw/
