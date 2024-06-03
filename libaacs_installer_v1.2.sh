@@ -2,17 +2,16 @@
   #========================================
   # Project: LIBAACS INSTALLER v1.2.1
   # Author:  ConzZah / ©️ 2024
-  # Last Modification: 03.06.2024 / 06:38
+  # Last Modification: 03.06.2024 / 07:07
   #========================================
 clear; echo "[ ConzZah's LIBAACS INSTALLER v1.2 ]"; echo ""
-echo "THIS SCRIPT WILL DOWNLOAD & INSTALL THE FOLLOWING:"; echo ""
+echo "THIS SCRIPT WILL DOWNLOAD & INSTALL THE FOLLOWING PACKAGES:"; echo ""
 echo "- vlc" 
 echo "- libaacs0" 
 echo "- libbluray-bdj" 
 echo "- libbluray2"
 echo "- keydb.cfg"
 echo ""; echo "[ PRESS ANY KEY TO START ]"; read -n 1 -s; echo ""
-echo "[ INSTALLING PACKAGES, PLEASE WAIT... ]"
 sudo apt install -y vlc libaacs0 libbluray-bdj libbluray2 >/dev/null 2>&1
 echo ""; echo "[ DONE INSTALLING LIBAACS ]"; echo ""; echo ""
 echo "[ DOWNLOADING KEYDB.CFG FROM: ]"; echo "[ https://archive.org/download/keydb_eng/keydb_eng.zip ]"; echo ""; echo "[ PLEASE WAIT ]"; mkdir -p ~/.config/aacs/; cd ~/.config/aacs/
