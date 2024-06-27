@@ -2,7 +2,7 @@
   #========================================
   # Project: LIBAACS INSTALLER v2
   # Author:  ConzZah / ©️ 2024
-  # Last Modification: 26.06.2024 / 06:04
+  # Last Modification: 27.06.2024 / 06:04
   #========================================
 function main {
 _install="deb_install"
