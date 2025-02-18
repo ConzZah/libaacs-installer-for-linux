@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+  #========================================
+  # Project: LIBAACS INSTALLER v2.2
+  # Author:  ConzZah / ©️ 2025
+  # Last Modification: 18.02.2025 / 12:10
+  #========================================
+main () {
+_install="deb_install" # <-- default
+done_msg="[ DONE INSTALLING LIBAACS ]"
+os=$(uname -v|grep -o 'Alpine\|Debian\|Ubuntu')
+[ -z "$os" ] && echo -e "sorry, your system is not supported right now.." && exit 1
+[[ "$os" == "Alpine" ]] && _install="alp_install"
+
+clear; echo "[ ConzZah's LIBAACS INSTALLER v2.1 ]"
+echo -e "\nTHIS WILL DOWNLOAD & INSTALL THE FOLLOWING PACKAGES:\n"
+echo -e "- vlc \n- curl \n- libaacs \n- libbluray \n- 7z & base64 (for converting & extracting keydb.cfg)"
+echo -e "\n[ PRESS ANY KEY TO START ]\n"; read -n 1 -s
+echo -e "OS: $os\n"
+$_install ;}
+
+deb_install () {
+# install for debian based distros:
+sudo apt update && sudo apt install -y vlc libaacs0 libbluray-bdj libbluray2 curl 7zip
+echo -e "\n$done_msg\n"; keydb_updatecheck ;}
+
+alp_install () {
+# install for alpine:
+doas apk update && doas apk add vlc-qt libaacs libbluray curl 7zip base64
+echo -e "\n$done_msg\n"; keydb_updatecheck ;}
+
+keydb_updatecheck () {
+# checks if there's been an update to keydb.cfg by comparing two files 
+touch .last_updated; echo -e "[ CHECKING FOR UPDATED KEYDB.CFG ... ]\n"
+curl -Lo "last_updated" "https://gist.github.com/ConzZah/57d1fecd5cba6cb49e45f4ff3149128c/raw"
+gist_link="$(sed -n '2p' last_updated)"; sed -i '2d' last_updated
+diff -q last_updated .last_updated && { echo -e "[ KEYDB.CFG UP TO DATE ]\n"; rm last_updated; quit ;} || keydb_downloader ;}
+
+keydb_downloader () {
+# keydb.cfg download function
+echo -e "[ DOWNLOADING KEYDB.CFG ]\n"; mkdir -p "$HOME/.config/aacs/"; cd "$HOME/.config/aacs/"
+curl -# -L -o "keydb_eng.7z.txt" "$gist_link"
+base64 -d keydb_eng.7z.txt > keydb_eng.7z
+echo -e "\n[ EXTRACTING KEYDB.CFG.. ]\n"
+7z x keydb_eng.7z >/dev/null 2>&1
+mv keydb.cfg KEYDB.cfg; rm keydb_eng.7z.txt keydb_eng.7z
+cd "$OLDPWD"; mv -f last_updated .last_updated; quit ;}
+
+quit () { echo -e "[ DONE. ENJOY YOUR BLU-RAYS! ] \n\n[ PRESS ANY KEY TO EXIT ]\n"; read -n 1 -s; exit ;}
+
+main
