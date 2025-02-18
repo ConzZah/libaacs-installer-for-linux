@@ -1,12 +1,13 @@
 # libaacs installer for linux 
 
 ## SIMPLE BASH SCRIPT TO ENABLE BLU-RAY PLAYBACK ON VLC
-![image](https://github.com/user-attachments/assets/b08ef03c-522c-4368-8729-fcbd883e58ce)
 
 ## WORKS ON:
-- Debian
-- Alpine
 
+- Alpine
+- Debian/Ubuntu based distros
+
+( will support more in the future )
 
 ## DOWNLOAD:
 <p>
