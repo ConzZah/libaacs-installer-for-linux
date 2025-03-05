@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
   #========================================
-  # Project: LIBAACS INSTALLER v2.3
+  # Project: LIBAACS INSTALLER v2.4
   # Author:  ConzZah / ©️ 2025
-  # Last Modification: 02.03.2025 / 18:23
+  # Last Modification: 05.03.2025 / 18:06
   #========================================
 main () {
 doso="sudo"
@@ -10,7 +10,7 @@ done_msg="[ DONE INSTALLING LIBAACS ]"
 mkdir -p "$HOME/.config/aacs/"; cd "$HOME/.config/aacs/"
 _debian="vlc libaacs0 libbluray-bdj libbluray2 curl 7zip"
 _alpine="vlc-qt libaacs libbluray curl 7zip base64"
-echo "[ ConzZah's LIBAACS INSTALLER v2.3 ]"
+echo "[ ConzZah's LIBAACS INSTALLER v2.4 ]"
 echo -e "\n[ PRESS ANY KEY TO START ]\n"; read -n 1 -s
 _install ;}
 
@@ -40,12 +40,13 @@ diff -q last_updated .last_updated >/dev/null 2>&1 && { echo -e "[ KEYDB.CFG UP 
 
 keydb_downloader () {
 # keydb.cfg download function
-echo -e "[ DOWNLOADING KEYDB.CFG ... ]\n";
-curl -# -L -o "keydb_eng.7z.txt" "$gist_link"
-base64 -d keydb_eng.7z.txt > keydb_eng.7z
+echo -e "[ DOWNLOADING KEYDB.CFG ... ]\n"
+curl -# -L -o "keydb_eng.7z.txt.zip" "$gist_link"
 echo -e "\n[ EXTRACTING KEYDB.CFG ... ]\n"
+7z e keydb_eng.7z.txt.zip keydb_eng.7z.txt -r >/dev/null 2>&1
+base64 -d keydb_eng.7z.txt > keydb_eng.7z
 7z x keydb_eng.7z >/dev/null 2>&1
-mv keydb.cfg KEYDB.cfg; rm keydb_eng.7z.txt keydb_eng.7z
+mv keydb.cfg KEYDB.cfg; rm -f keydb_eng.7z*
 mv -f last_updated .last_updated; quit ;}
 
 quit () { echo -e "[ DONE. ENJOY YOUR BLU-RAYS! ] \n\n[ PRESS ANY KEY TO EXIT ]\n"; read -n 1 -s; exit ;}
